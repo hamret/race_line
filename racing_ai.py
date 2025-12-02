@@ -249,7 +249,7 @@ def process_video(video_path):
             continue
 
         # 크기 조정
-        frame = cv2.resize(frame, (960, 540))
+        frame = cv2.resize(frame, (1280, 720))
         h, w = frame.shape[:2]
 
         # 차선 검출

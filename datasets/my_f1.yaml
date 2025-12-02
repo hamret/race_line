@@ -1,0 +1,8 @@
+# my_f1.yaml
+path: C:/Users/user/PycharmProjects/race_line/datasets
+
+train: my_f1/images/train
+val: my_f1/images/val
+
+nc: 1
+names: ['vehicle']

@@ -3,8 +3,8 @@
 path: C:/Users/user/PycharmProjects/race_line/datasets
 
 train:
-  - roboflow/train/images
   - my_f1/images/train
+  - roboflow/train/images
 
 val:
   - roboflow/valid/images
