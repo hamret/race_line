@@ -1,0 +1,14 @@
+# C:\Users\user\PycharmProjects\race_line\datasets\f1_mix.yaml
+
+path: C:/Users/user/PycharmProjects/race_line/datasets
+
+train:
+  - roboflow/train/images
+  - my_f1/images/train
+
+val:
+  - roboflow/valid/images
+  - my_f1/images/val
+
+nc: 1
+names: ['vehicle']

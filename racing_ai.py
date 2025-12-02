@@ -37,10 +37,10 @@ total_frames = 0
 device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
 print("Using device:", device)
 
-model = YOLO(r'C:\Users\user\PycharmProjects\race_line\yolo11n.pt')
+model = YOLO('yolo11l.pt')   # 또는 'yolo11m'
 model.to(device)
-model.conf = 0.4  # 기본값 0.25보다 조금 높게
-model.iou = 0.5  # 기본값 0.7보다 낮춰서 NMS 덜 공격적으로
+model.conf = 0.35
+model.iou = 0.45
 
 # Vehicle class 집합 (car, motorcycle, bus, truck 등)
 VEHICLE_CLASSES = {2, 3, 5, 7}
@@ -50,7 +50,7 @@ class VehicleTracker:
     def __init__(self):
         self.tracks = {}
         self.next_id = 0
-        self.max_distance = 50
+        self.max_distance = 100
 
     def update(self, detections):
         """
@@ -236,7 +236,7 @@ def process_video(video_path):
 
     frame_data_log = []
     processed_frames = 0
-    frame_skip = 2  # 전체 프레임의 절반만 처리
+    frame_skip = 1  # 전체 프레임의 절반만 처리
 
     while not stop_processing and cap.isOpened():
         ret, frame = cap.read()
@@ -249,7 +249,7 @@ def process_video(video_path):
             continue
 
         # 크기 조정
-        frame = cv2.resize(frame, (640, 480))
+        frame = cv2.resize(frame, (960, 540))
         h, w = frame.shape[:2]
 
         # 차선 검출
