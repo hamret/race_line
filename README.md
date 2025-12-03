@@ -1,4 +1,4 @@
-# 🏎️ F1 Onboard Video Overtaking Analysis System
+# F1 Onboard Video Overtaking Analysis System
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-orange.svg)](https://pytorch.org/)
@@ -9,7 +9,7 @@
 
 ---
 
-## 🎬 프로젝트 개요
+## 프로젝트 개요
 
 F1 경기를 보면서, 혹은 F1 게임을 플레이하면서 이런 생각 해보신 적 없나요?
 
@@ -29,7 +29,7 @@ F1 드라이버의 온보드 카메라 영상을 업로드하면, AI가 실시�
 
 ---
 
-## ✨ 주요 기능
+## 주요 기능
 
 ### 1. F1 차량 실시간 검출
 - **YOLO11x** 모델로 F1 머신을 자동 검출 (신뢰도 0.2 이상)
