@@ -67,524 +67,581 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-      background: var(--f1-black);
-      border: 2px solid var(--f1-gold);
-      border-radius: 4px;
+      border: 2px solid var(--f1-red);
+      background: var(--f1-dark-gray);
+      border-radius: 8px;
       overflow: hidden;
-      position: relative;
-      max-height: 80vh;
+      box-shadow: 0 0 20px rgba(220, 0, 0, 0.5);
     }
 
-    .f1-header {
-      background: linear-gradient(90deg, var(--f1-red) 0%, var(--f1-dark-gray) 50%, var(--f1-black) 100%);
-      padding: 12px 16px;
-      border-bottom: 3px solid var(--f1-gold);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .f1-header-title {
-      font-family: var(--f1-font-bold);
-      font-size: var(--font-size-2xl);
-      color: var(--f1-gold);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: 900;
-    }
-
-    .f1-header-subtitle {
-      font-size: var(--font-size-xs);
-      color: var(--f1-silver);
-      text-transform: uppercase;
-      margin-top: 2px;
-    }
-
-    /* Video Stream */
-    .f1-video-stream {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--f1-black);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .f1-video-stream img {
+    .f1-video-panel video,
+    .f1-video-panel img {
       width: 100%;
-      height: auto;
-      max-height: 70vh;
+      height: 100%;
       object-fit: contain;
     }
 
-    .f1-video-placeholder {
-      font-size: var(--font-size-lg);
-      color: var(--f1-silver);
-      text-align: center;
-    }
-
-    /* Right Panel - Dashboard */
-    .f1-dashboard {
+    /* Right Panel - Controls & Info */
+    .f1-control-panel {
       width: 320px;
       display: flex;
       flex-direction: column;
       gap: 12px;
-      overflow-y: auto;
-      overflow-x: hidden;
-      padding-right: 8px;
-      max-height: 100vh;
     }
 
-    .f1-dashboard::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .f1-dashboard::-webkit-scrollbar-track {
-      background: var(--f1-dark-gray);
-    }
-
-    .f1-dashboard::-webkit-scrollbar-thumb {
-      background: var(--f1-gold);
-      border-radius: 3px;
-    }
-
-    /* Dashboard Card */
-    .f1-card {
-      background: var(--f1-dark-gray);
-      border: 1px solid var(--f1-gold);
-      border-radius: 4px;
+    /* Header */
+    .f1-header {
+      background: linear-gradient(to right, var(--f1-red), #990000);
       padding: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+      border-radius: 6px;
+      text-align: center;
+      border: 2px solid var(--f1-gold);
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
     }
 
-    .f1-card-title {
-      font-family: var(--f1-font-bold);
+    .f1-header h1 {
+      font-size: var(--font-size-2xl);
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .f1-header p {
       font-size: var(--font-size-sm);
-      color: var(--f1-gold);
+      margin-top: 4px;
+      opacity: 0.9;
+    }
+
+    /* Upload Section */
+    .f1-upload-box {
+      background: var(--f1-dark-gray);
+      border: 2px dashed var(--f1-gold);
+      border-radius: 6px;
+      padding: 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .f1-upload-box:hover {
+      background: rgba(255, 215, 0, 0.05);
+      border-color: var(--f1-white);
+    }
+
+    .f1-upload-box input[type="file"] {
+      display: none;
+    }
+
+    .f1-upload-label {
+      cursor: pointer;
+      display: block;
+    }
+
+    .f1-upload-label span {
+      font-size: var(--font-size-lg);
+      font-weight: bold;
+    }
+
+    .f1-upload-label .file-hint {
+      font-size: var(--font-size-sm);
+      color: var(--f1-silver);
+      margin-top: 4px;
+    }
+
+    /* Progress Bar */
+    .f1-progress-container {
+      background: var(--f1-dark-gray);
+      border-radius: 6px;
+      padding: 8px;
+      border: 1px solid var(--f1-silver);
+      display: none;
+    }
+
+    .f1-progress-container.active {
+      display: block;
+    }
+
+    .f1-progress-bar {
+      width: 100%;
+      height: 20px;
+      background: #333;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--f1-gold);
+    }
+
+    .f1-progress-fill {
+      height: 100%;
+      background: linear-gradient(to right, var(--f1-red), var(--status-possible));
+      width: 0%;
+      transition: width 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--font-size-xs);
+      font-weight: bold;
+    }
+
+    .f1-progress-text {
+      font-size: var(--font-size-xs);
+      margin-top: 4px;
+      text-align: center;
+      color: var(--f1-silver);
+    }
+
+    /* Telemetry Panel - IMPROVED */
+    .f1-telemetry-panel {
+      background: var(--f1-dark-gray);
+      border: 2px solid var(--f1-silver);
+      border-radius: 6px;
+      padding: 12px;
+      flex: 1;
+      overflow-y: auto;
+      box-shadow: 0 0 10px rgba(192, 192, 192, 0.2);
+    }
+
+    .f1-telemetry-title {
+      font-size: var(--font-size-lg);
+      font-weight: bold;
+      margin-bottom: 10px;
       text-transform: uppercase;
       letter-spacing: 1px;
-      border-bottom: 1px solid var(--f1-gold);
-      padding-bottom: 6px;
+      border-bottom: 2px solid var(--f1-gold);
+      padding-bottom: 8px;
     }
 
-    /* Telemetry Display */
-    .f1-telemetry-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 6px 0;
-      border-bottom: 1px solid rgba(255, 215, 0, 0.1);
-      font-size: var(--font-size-sm);
+    /* Telemetry Grid - IMPROVED */
+    .telemetry-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 10px;
     }
 
-    .f1-telemetry-row:last-child {
-      border-bottom: none;
-    }
-
-    .f1-telemetry-label {
-      color: var(--f1-silver);
-      text-transform: uppercase;
-      font-size: var(--font-size-xs);
-      letter-spacing: 0.5px;
-    }
-
-    .f1-telemetry-value {
-      font-family: 'Courier New', monospace;
-      font-weight: bold;
-      font-size: var(--font-size-lg);
-      color: var(--f1-white);
-    }
-
-    /* Speed Display */
-    .f1-speed-display {
-      background: linear-gradient(135deg, var(--f1-red) 0%, var(--f1-dark-gray) 100%);
-      border: 2px solid var(--f1-red);
+    .telemetry-item {
+      background: rgba(30, 30, 30, 0.8);
+      border: 1px solid var(--f1-silver);
       border-radius: 4px;
-      padding: 12px;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
     }
 
-    .f1-speed-label {
+    .telemetry-item.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .telemetry-label {
       font-size: var(--font-size-xs);
-      color: var(--f1-silver);
+      color: var(--f1-gold);
       text-transform: uppercase;
+      letter-spacing: 0.5px;
       margin-bottom: 4px;
+      font-weight: bold;
     }
 
-    .f1-speed-value {
-      font-family: 'Courier New', monospace;
-      font-size: var(--font-size-3xl);
-      font-weight: 900;
+    .telemetry-value {
+      font-size: var(--font-size-2xl);
+      font-weight: bold;
       color: var(--f1-white);
+      font-family: 'Courier New', monospace;
     }
 
-    .f1-speed-unit {
-      font-size: var(--font-size-sm);
+    .telemetry-unit {
+      font-size: var(--font-size-xs);
       color: var(--f1-silver);
       margin-top: 2px;
     }
 
-    /* Status Indicator */
-    .f1-status {
-      border-radius: 4px;
-      padding: 12px;
-      text-align: center;
-      font-family: var(--f1-font-bold);
-      text-transform: uppercase;
-      border: 2px solid;
-      font-size: var(--font-size-lg);
-    }
-
-    .f1-status.possible {
-      background: rgba(0, 255, 0, 0.1);
-      border-color: var(--status-possible);
-      color: var(--status-possible);
-    }
-
-    .f1-status.risky {
-      background: rgba(255, 255, 0, 0.1);
-      border-color: var(--status-risky);
-      color: var(--status-risky);
-    }
-
-    .f1-status.not-possible {
-      background: rgba(255, 0, 0, 0.1);
-      border-color: var(--status-not);
-      color: var(--status-not);
-    }
-
-    /* Controls */
-    .f1-controls {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .f1-btn {
-      flex: 1;
-      min-width: 80px;
-      padding: 8px 12px;
-      background: var(--f1-red);
-      color: var(--f1-white);
-      border: none;
-      border-radius: 4px;
-      font-family: var(--f1-font-bold);
+    .telemetry-sub {
       font-size: var(--font-size-sm);
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.2s;
+      color: var(--f1-silver);
+      margin-top: 4px;
+    }
+
+    /* Status Badge - IMPROVED */
+    .status-badge {
+      grid-column: 1 / -1;
+      padding: 10px;
+      border-radius: 4px;
+      text-align: center;
       font-weight: bold;
+      font-size: var(--font-size-lg);
       letter-spacing: 1px;
     }
 
-    .f1-btn:hover {
-      background: var(--f1-gold);
-      color: var(--f1-black);
-      transform: scale(1.02);
+    .status-badge.possible {
+      background: rgba(0, 255, 0, 0.15);
+      border: 2px solid var(--status-possible);
+      color: var(--status-possible);
     }
 
-    .f1-btn:active {
-      transform: scale(0.98);
+    .status-badge.risky {
+      background: rgba(255, 255, 0, 0.15);
+      border: 2px solid var(--status-risky);
+      color: var(--status-risky);
     }
 
-    .f1-btn.secondary {
-      background: var(--f1-dark-gray);
-      border: 2px solid var(--f1-gold);
-      color: var(--f1-gold);
+    .status-badge.caution {
+      background: rgba(255, 165, 0, 0.15);
+      border: 2px solid #FFA500;
+      color: #FFA500;
     }
 
-    .f1-btn.secondary:hover {
-      background: var(--f1-gold);
-      color: var(--f1-black);
+    .status-badge.dangerous {
+      background: rgba(255, 0, 0, 0.15);
+      border: 2px solid var(--status-not);
+      color: var(--status-not);
     }
 
-    /* Progress Bar */
-    .f1-progress {
-      width: 100%;
-      height: 24px;
-      background: rgba(255, 215, 0, 0.1);
+    .status-badge.neutral {
+      background: rgba(0, 168, 255, 0.15);
+      border: 2px solid var(--status-neutral);
+      color: var(--status-neutral);
+    }
+
+    /* Detail Info - IMPROVED */
+    .telemetry-detail {
+      grid-column: 1 / -1;
+      background: rgba(50, 50, 50, 0.8);
       border: 1px solid var(--f1-gold);
       border-radius: 4px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
+      padding: 8px;
+      font-size: var(--font-size-xs);
+      line-height: 1.6;
     }
 
-    .f1-progress-bar {
-      height: 100%;
-      background: linear-gradient(90deg, var(--f1-red), var(--f1-gold));
-      transition: width 0.3s ease;
+    .detail-row {
       display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      padding-right: 4px;
-      font-size: var(--font-size-xs);
-      color: var(--f1-black);
+      justify-content: space-between;
+      margin-bottom: 4px;
+      padding: 2px 0;
+    }
+
+    .detail-label {
+      color: var(--f1-gold);
+      font-weight: bold;
+      min-width: 100px;
+    }
+
+    .detail-value {
+      color: var(--f1-white);
+      text-align: right;
+      font-family: 'Courier New', monospace;
       font-weight: bold;
     }
 
-    /* Input Styling */
-    .f1-input {
-      width: 100%;
-      padding: 8px;
-      background: var(--f1-dark-gray);
-      border: 1px solid var(--f1-gold);
+    /* Download Button */
+    .f1-button {
+      background: linear-gradient(to right, var(--f1-red), #990000);
+      border: 2px solid var(--f1-gold);
       color: var(--f1-white);
+      padding: 10px 16px;
       border-radius: 4px;
-      font-family: var(--f1-font-regular);
-      font-size: var(--font-size-sm);
+      cursor: pointer;
+      font-weight: bold;
+      font-size: var(--font-size-md);
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    .f1-input:focus {
-      outline: none;
-      border-color: var(--f1-red);
-      box-shadow: 0 0 8px rgba(220, 0, 0, 0.5);
+    .f1-button:hover {
+      background: linear-gradient(to right, var(--f1-red), #CC0000);
+      box-shadow: 0 0 15px rgba(220, 0, 0, 0.6);
+      transform: scale(1.02);
     }
 
-    /* Hidden input */
-    #video-input {
-      display: none;
+    .f1-button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: scale(1);
     }
 
-    /* Loading Animation */
-    @keyframes f1-pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
+    /* Scrollbar Styling */
+    .f1-telemetry-panel::-webkit-scrollbar {
+      width: 8px;
     }
 
-    .f1-loading {
-      animation: f1-pulse 1s infinite;
+    .f1-telemetry-panel::-webkit-scrollbar-track {
+      background: rgba(255, 215, 0, 0.1);
+      border-radius: 4px;
+    }
+
+    .f1-telemetry-panel::-webkit-scrollbar-thumb {
+      background: var(--f1-gold);
+      border-radius: 4px;
+    }
+
+    .f1-telemetry-panel::-webkit-scrollbar-thumb:hover {
+      background: var(--f1-white);
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .f1-control-panel {
+        width: 280px;
+      }
+
+      .telemetry-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
   <div class="f1-container">
-    <!-- Left Panel: Video -->
+    <!-- Left Panel - Video Stream -->
     <div class="f1-video-panel">
-      <div class="f1-header">
-        <div>
-          <div class="f1-header-title">🏁 RACING LINE AI</div>
-          <div class="f1-header-subtitle">Real-time Overtaking Analysis</div>
-        </div>
-      </div>
-
-      <div class="f1-video-stream">
-        <img id="video-stream" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect fill='%23000' width='800' height='600'/%3E%3Ctext x='400' y='300' text-anchor='middle' fill='%23c0c0c0' font-size='24' font-family='Arial'%3E📹 VIDEO READY%3C/text%3E%3C/svg%3E" alt="Video Stream">
-      </div>
+      <img id="video-stream" src="/video_feed" alt="Video Stream" />
     </div>
 
-    <!-- Right Panel: Dashboard -->
-    <div class="f1-dashboard">
-      <!-- Upload Card -->
-      <div class="f1-card">
-        <div class="f1-card-title">📁 Upload Video</div>
+    <!-- Right Panel - Controls & Telemetry -->
+    <div class="f1-control-panel">
+      <!-- Header -->
+      <div class="f1-header">
+        <h1>🏎️ F1 RACING</h1>
+        <p>AI Line Detection & Analysis</p>
+      </div>
+
+      <!-- Upload Section -->
+      <div class="f1-upload-box" id="upload-box">
+        <label for="video-input" class="f1-upload-label">
+          <span>📁 Choose Video</span>
+          <div class="file-hint">MP4 Only</div>
+        </label>
         <input type="file" id="video-input" accept=".mp4" />
-        <button class="f1-btn" onclick="document.getElementById('video-input').click();">Choose MP4</button>
-        <div id="upload-status" class="f1-telemetry-label" style="color: var(--f1-gold); margin-top: 4px;">Ready</div>
       </div>
 
-      <!-- Speed Card -->
-      <div class="f1-card">
-        <div class="f1-card-title">⚡ Speed Telemetry</div>
-        <div class="f1-speed-display">
-          <div class="f1-speed-label">EGO CAR</div>
-          <div class="f1-speed-value" id="ego-speed">--</div>
-          <div class="f1-speed-unit">KM/H</div>
+      <!-- Progress Bar -->
+      <div class="f1-progress-container" id="progress-container">
+        <div class="f1-progress-bar">
+          <div class="f1-progress-fill" id="progress-fill">0%</div>
         </div>
-        <div class="f1-telemetry-row">
-          <span class="f1-telemetry-label">Lead Car</span>
-          <span class="f1-telemetry-value" id="lead-speed">-- km/h</span>
-        </div>
-        <div class="f1-telemetry-row">
-          <span class="f1-telemetry-label">Δ Speed</span>
-          <span class="f1-telemetry-value" id="speed-delta">-- km/h</span>
+        <div class="f1-progress-text">
+          <span id="progress-text">Processing...</span>
         </div>
       </div>
 
-      <!-- Distance Card -->
-      <div class="f1-card">
-        <div class="f1-card-title">📍 Progress Bar</div>
-        <div class="f1-telemetry-row">
-          <span class="f1-telemetry-label">Processing</span>
-          <span class="f1-telemetry-value" id="distance-value">--</span>
-        </div>
-        <div class="f1-progress">
-          <div class="f1-progress-bar" id="distance-bar" style="width: 0%;">0%</div>
+      <!-- Telemetry Panel - IMPROVED -->
+      <div class="f1-telemetry-panel">
+        <div class="f1-telemetry-title">📊 Telemetry</div>
+
+        <!-- Main Metrics Grid -->
+        <div class="telemetry-grid">
+          <!-- EGO Speed -->
+          <div class="telemetry-item">
+            <div class="telemetry-label">👤 Ego Speed</div>
+            <div class="telemetry-value" id="ego-speed">--</div>
+            <div class="telemetry-unit">km/h</div>
+          </div>
+
+          <!-- Lead Speed -->
+          <div class="telemetry-item">
+            <div class="telemetry-label">🎯 Lead Speed</div>
+            <div class="telemetry-value" id="lead-speed">--</div>
+            <div class="telemetry-unit">km/h</div>
+          </div>
+
+          <!-- Speed Delta -->
+          <div class="telemetry-item">
+            <div class="telemetry-label">⚡ Δ Speed</div>
+            <div class="telemetry-value" id="speed-delta">--</div>
+            <div class="telemetry-unit">km/h</div>
+          </div>
+
+          <!-- Distance -->
+          <div class="telemetry-item">
+            <div class="telemetry-label">📏 Distance</div>
+            <div class="telemetry-value" id="distance">--</div>
+            <div class="telemetry-unit">m</div>
+          </div>
+
+          <!-- Overtaking Status -->
+          <div class="status-badge neutral" id="overtake-status">
+            🔵 READY
+          </div>
+
+          <!-- Overtaking Score -->
+          <div class="telemetry-item full-width">
+            <div class="telemetry-label">📈 Overtaking Score</div>
+            <div class="telemetry-value" id="overtake-score">--</div>
+            <div class="telemetry-unit">%</div>
+          </div>
+
+          <!-- Detail Information - IMPROVED -->
+          <div class="telemetry-detail">
+            <div class="detail-row">
+              <span class="detail-label">Frame:</span>
+              <span class="detail-value" id="frame-num">0</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Timestamp:</span>
+              <span class="detail-value" id="timestamp">0.00s</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Progress:</span>
+              <span class="detail-value" id="progress-pct">0%</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Status:</span>
+              <span class="detail-value" id="status-text">IDLE</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Overtaking Status Card -->
-      <div class="f1-card">
-        <div class="f1-card-title">🚨 Overtaking Analysis</div>
-        <div class="f1-status not-possible" id="overtake-status">
-          ❌ NOT POSSIBLE
-        </div>
-        <div class="f1-telemetry-row">
-          <span class="f1-telemetry-label">Score</span>
-          <span class="f1-telemetry-value" id="overtake-score">0%</span>
-        </div>
-      </div>
-
-      <!-- Performance Card -->
-      <div class="f1-card">
-        <div class="f1-card-title">📊 Performance</div>
-        <div class="f1-telemetry-row">
-          <span class="f1-telemetry-label">FPS</span>
-          <span class="f1-telemetry-value" id="fps-value">-- fps</span>
-        </div>
-        <div class="f1-telemetry-row">
-          <span class="f1-telemetry-label">Frame</span>
-          <span class="f1-telemetry-value" id="frame-count">0</span>
-        </div>
-        <div class="f1-telemetry-row">
-          <span class="f1-telemetry-label">Status</span>
-          <span class="f1-telemetry-value" id="processing-status">Ready</span>
-        </div>
-      </div>
-
-      <!-- Controls Card -->
-      <div class="f1-card">
-        <div class="f1-card-title">🎮 Controls</div>
-        <div class="f1-controls">
-          <button class="f1-btn" id="play-btn" onclick="togglePlayPause();">PLAY</button>
-          <button class="f1-btn secondary" id="reset-btn" onclick="resetAnalysis();">RESET</button>
-        </div>
-        <button class="f1-btn" style="margin-top: 8px; width: 100%;" onclick="downloadData();">📥 DOWNLOAD</button>
-      </div>
+      <!-- Download Button -->
+      <button class="f1-button" id="download-btn" disabled>
+        📥 Download Data
+      </button>
     </div>
   </div>
 
   <script>
-    // Update video stream
-    function updateVideoStream() {
-      const img = document.getElementById('video-stream');
-      img.src = '/video_feed?t=' + Date.now();
-      setTimeout(updateVideoStream, 100);
-    }
+    const videoInput = document.getElementById('video-input');
+    const uploadBox = document.getElementById('upload-box');
+    const progressContainer = document.getElementById('progress-container');
+    const progressFill = document.getElementById('progress-fill');
+    const progressText = document.getElementById('progress-text');
+    const downloadBtn = document.getElementById('download-btn');
 
-    // Poll telemetry data from backend
-    function pollTelemetry() {
-      fetch('/telemetry')
-        .then(res => res.json())
-        .then(data => {
-          if (data.ego_speed != null) {
-            document.getElementById('ego-speed').textContent = data.ego_speed.toFixed(1);
-          }
-          if (data.lead_speed != null) {
-            document.getElementById('lead-speed').textContent = data.lead_speed.toFixed(1) + ' km/h';
-          }
-          if (data.speed_delta != null) {
-            document.getElementById('speed-delta').textContent = data.speed_delta.toFixed(1) + ' km/h';
-          }
+    // Telemetry Elements - IMPROVED
+    const telemetryElements = {
+      egoSpeed: document.getElementById('ego-speed'),
+      leadSpeed: document.getElementById('lead-speed'),
+      speedDelta: document.getElementById('speed-delta'),
+      distance: document.getElementById('distance'),
+      overtakeScore: document.getElementById('overtake-score'),
+      overtakeStatus: document.getElementById('overtake-status'),
+      frameNum: document.getElementById('frame-num'),
+      timestamp: document.getElementById('timestamp'),
+      progressPct: document.getElementById('progress-pct'),
+      statusText: document.getElementById('status-text')
+    };
 
-          // Progress bar
-          if (data.progress != null) {
-            const bar = document.getElementById('distance-bar');
-            bar.style.width = data.progress + '%';
-            bar.textContent = Math.round(data.progress) + '%';
-            document.getElementById('distance-value').textContent = 
-              data.processed_frames + ' / ' + data.total_frames + ' frames';
-          }
-
-          // Overtake score + status
-          if (data.overtake_score != null) {
-            document.getElementById('overtake-score').textContent =
-              data.overtake_score.toFixed(1) + '%';
-          }
-          if (data.overtake_status) {
-            const statusEl = document.getElementById('overtake-status');
-            let statusText = '';
-            let statusClass = 'not-possible';
-            
-            if (data.overtake_status === 'POSSIBLE') {
-              statusText = '✅ POSSIBLE';
-              statusClass = 'possible';
-            } else if (data.overtake_status === 'RISKY') {
-              statusText = '⚠️ RISKY';
-              statusClass = 'risky';
-            } else if (data.overtake_status === 'NOT_POSSIBLE') {
-              statusText = '❌ NOT POSSIBLE';
-              statusClass = 'not-possible';
-            } else {
-              statusText = data.overtake_status;
-            }
-            
-            statusEl.textContent = statusText;
-            statusEl.className = 'f1-status ' + statusClass;
-          }
-
-          // FPS / Frame / Status
-          if (data.fps != null) {
-            document.getElementById('fps-value').textContent =
-              (typeof data.fps === 'number' ? data.fps.toFixed(1) : data.fps) + ' fps';
-          }
-          if (data.frame != null) {
-            document.getElementById('frame-count').textContent = data.frame;
-          }
-
-          setTimeout(pollTelemetry, 300);
-        })
-        .catch(() => {
-          setTimeout(pollTelemetry, 1000);
-        });
-    }
-
-    // Toggle play/pause
-    function togglePlayPause() {
-      const btn = document.getElementById('play-btn');
-      btn.textContent = btn.textContent === 'PLAY' ? 'PAUSE' : 'PLAY';
-    }
-
-    // Reset analysis
-    function resetAnalysis() {
-      document.getElementById('ego-speed').textContent = '--';
-      document.getElementById('lead-speed').textContent = '-- km/h';
-      document.getElementById('speed-delta').textContent = '-- km/h';
-      document.getElementById('distance-value').textContent = '--';
-      document.getElementById('distance-bar').style.width = '0%';
-      document.getElementById('distance-bar').textContent = '0%';
-      document.getElementById('overtake-score').textContent = '0%';
-      document.getElementById('overtake-status').className = 'f1-status not-possible';
-      document.getElementById('overtake-status').textContent = '❌ NOT POSSIBLE';
-      document.getElementById('fps-value').textContent = '-- fps';
-      document.getElementById('frame-count').textContent = '0';
-      document.getElementById('processing-status').textContent = 'Ready';
-    }
-
-    // Download data
-    function downloadData() {
-      window.location.href = '/download_data';
-    }
-
-    // File upload handler
-    document.getElementById('video-input').addEventListener('change', function(e) {
+    // Upload event
+    uploadBox.addEventListener('click', () => videoInput.click());
+    videoInput.addEventListener('change', (e) => {
       const file = e.target.files[0];
-      if (file) {
+      if (file && file.name.endsWith('.mp4')) {
         const formData = new FormData();
         formData.append('file', file);
 
-        document.getElementById('upload-status').textContent = 'Uploading...';
+        fetch('/upload', { method: 'POST', body: formData })
+          .then(res => res.json())
+          .then(data => {
+            if (data.status === 'processing') {
+              progressContainer.classList.add('active');
+              downloadBtn.disabled = true;
+              telemetryElements.statusText.textContent = 'PROCESSING';
+              startProgressUpdate();
+              startTelemetryUpdate();
+            }
+          });
+      }
+    });
 
-        fetch('/upload', {
-          method: 'POST',
-          body: formData
-        })
-        .then(res => res.json())
-        .then(data => {
-          if (data.status === 'processing') {
-            document.getElementById('upload-status').textContent = 'Processing...';
-            document.getElementById('processing-status').textContent = 'Running';
-            updateVideoStream();
-            pollTelemetry();
+    // Progress Update
+    function startProgressUpdate() {
+      const progressInterval = setInterval(() => {
+        fetch('/progress')
+          .then(res => res.json())
+          .then(data => {
+            const progress = Math.round(data.progress);
+            progressFill.style.width = progress + '%';
+            progressFill.textContent = progress + '%';
+            progressText.textContent = `${data.processed_frames} / ${data.total_frames}`;
+            telemetryElements.progressPct.textContent = progress.toFixed(1) + '%';
+
+            if (progress >= 100) {
+              clearInterval(progressInterval);
+              downloadBtn.disabled = false;
+              telemetryElements.statusText.textContent = 'COMPLETE';
+            }
+          });
+      }, 500);
+    }
+
+    // Telemetry Update - IMPROVED
+    function startTelemetryUpdate() {
+      const telemetryInterval = setInterval(() => {
+        fetch('/telemetry')
+          .then(res => res.json())
+          .then(data => {
+            // Update main values
+            if (data.ego_speed != null) {
+              telemetryElements.egoSpeed.textContent = data.ego_speed.toFixed(1);
+            }
+
+            if (data.lead_speed != null) {
+              telemetryElements.leadSpeed.textContent = data.lead_speed.toFixed(1);
+            }
+
+            if (data.speed_delta != null) {
+              telemetryElements.speedDelta.textContent = data.speed_delta.toFixed(1);
+            }
+
+            if (data.distance != null) {
+              telemetryElements.distance.textContent = data.distance.toFixed(1);
+            }
+
+            if (data.overtake_score != null) {
+              telemetryElements.overtakeScore.textContent = data.overtake_score.toFixed(1);
+            }
+
+            // Update status badge
+            if (data.overtake_status) {
+              const statusEl = telemetryElements.overtakeStatus;
+              statusEl.className = 'status-badge neutral';
+
+              const statusMap = {
+                'DANGEROUS': { class: 'dangerous', emoji: '🔴' },
+                'RISKY': { class: 'risky', emoji: '🟡' },
+                'CAUTION': { class: 'caution', emoji: '🟠' },
+                'POSSIBLE': { class: 'possible', emoji: '🟢' },
+                'READY': { class: 'neutral', emoji: '🔵' }
+              };
+
+              const statusInfo = statusMap[data.overtake_status] || statusMap['READY'];
+              statusEl.className = 'status-badge ' + statusInfo.class;
+              statusEl.textContent = statusInfo.emoji + ' ' + data.overtake_status;
+            }
+
+            // Update detail information
+            telemetryElements.frameNum.textContent = data.frame || '0';
+            if (data.fps) {
+              const seconds = (data.frame / data.fps).toFixed(2);
+              telemetryElements.timestamp.textContent = seconds + 's';
+            }
+
+            if (data.progress >= 100) {
+              clearInterval(telemetryInterval);
+              telemetryElements.statusText.textContent = 'COMPLETE';
+            }
+          });
+      }, 200);
+    }
+
+    // Download Data
+    downloadBtn.addEventListener('click', () => {
+      fetch('/download_data')
+        .then(res => {
+          if (res.ok) {
+            return res.blob();
           }
         })
-        .catch(err => {
-          document.getElementById('upload-status').textContent = 'Error: ' + err;
+        .then(blob => {
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `racing_analysis_${new Date().toISOString().slice(0, 10)}.csv`;
+          document.body.appendChild(a);
+          a.click();
+          window.URL.revokeObjectURL(url);
+          document.body.removeChild(a);
         });
-      }
     });
   </script>
 </body>
