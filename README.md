@@ -237,7 +237,8 @@ frame = cv2.resize(frame, (960, 540))
 
 #### 실제 F1 선수의 온보드 영상 분석
 
-[![Demo Video](https://img.youtube.com/vi/Br0KQPrcskY/hqdefault.jpg)](https://youtu.be/Br0KQPrcskY?si=aQ3DllAo4q8diDyh)
+[![F1 Overtaking Analysis Demo](https://img.youtube.com/vi/Br0KQPrcskY/maxresdefault.jpg)](https://www.youtube.com/watch?v=Br0KQPrcskY)
+
 
 영상에서는 캐나다 질 빌뇌브 서킷 (Circuit Gilles Villeneuve)의 고속 구간을 주행하는 장면이 나타납니다:
 
