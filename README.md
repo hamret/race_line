@@ -243,7 +243,7 @@ frame = cv2.resize(frame, (960, 540))
 영상에서는 캐나다 질 빌뇌브 서킷 (Circuit Gilles Villeneuve)의 고속 구간을 주행하는 장면이 나타납니다:
 
 <a align="center">                          
-<img src="photo/posss.png" width="600"></a>   
+<img src="photo/posss.png" width="1000"></a>   
 
 - 선행 차량과의 거리: 5.3m 
 - Ego 속도: 8.0km/h
@@ -254,7 +254,7 @@ frame = cv2.resize(frame, (960, 540))
 **시스템 판단**: 거리가 충분하고 속도 차가 적고 가속 상태 양호로 추월을 위해 어택할것을 권고.
 
 <a align="center">                          
-<img src="photo/1584.png" width="600"></a>   
+<img src="photo/1584.png" width="1000"></a>   
 
 - 선행 차량과의 거리: 24.1m (상대 거리 0.32)
 - Ego 속도: 13.0 km/h
@@ -277,10 +277,10 @@ frame = cv2.resize(frame, (960, 540))
 ### F1 게임에서의 활용 
 
 <a align="center">                          
-<img src="photo/game.png" width="600"></a>   
+<img src="photo/game.png" width="1000"></a>   
 
 <a align="center">                          
-<img src="photo/game2.png" width="600"></a>   
+<img src="photo/game2.png" width="1000"></a>   
 </p>
 
 첨부된 게임 스크린샷을 보면, 본 시스템이 **F1 25 게임 플레이 영상에서도 동일하게 작동**함을 확인할 수 있습니다.
