@@ -223,7 +223,7 @@ frame = cv2.resize(frame, (960, 540))
 ### 영상 분석 상세
 
 #### 실제 F1 선수의 온보드 영상 분석
-# 아래 사진은 영상입니다. 클릭하시면 보실수 있습니다.
+# 바로 아래 사진은 영상입니다. 클릭하시면 보실수 있습니다.
 [![F1 Overtaking Analysis Demo](https://img.youtube.com/vi/Br0KQPrcskY/maxresdefault.jpg)](https://www.youtube.com/watch?v=Br0KQPrcskY)
 
 
