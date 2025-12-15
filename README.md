@@ -243,7 +243,7 @@ frame = cv2.resize(frame, (960, 540))
 <a align="center">                          
 <img src="photo/1584.png" width="1000"></a>   
 
-- 선행 차량과의 거리: 24.1m (상대 거리 0.32)
+- 선행 차량과의 거리: 24.1m 
 - Ego 가속도: 13.0 km/h
 - 선행 차량 가속도: 20.9 km/h
 - Δ SPEED: -7.9km/h (선행 차량이 더 빠름)
