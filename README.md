@@ -156,19 +156,6 @@ speed_kmh = (pixel_distance / pixels_per_meter) / time_delta * 3.6
 ---
 
 ## 프로젝트 구조
-
-f1-overtaking-ai/
-├── racing_ai.py           # Flask 서버 및 F1 영상 처리 파이프라인
-├── labeling_tool.py       # F1 차량 라벨링 도구
-├── train_f1_mix.py        # YOLO11 F1 데이터셋 학습 스크립트
-├── index.html             # F1 대시보드 웹 UI
-├── requirements.txt       # 패키지 의존성
-├── uploads/               # F1 온보드 영상 저장 폴더
-├── frames/                # 라벨링용 F1 프레임 폴더
-├── labels/                # YOLO 포맷 라벨 폴더
-└── datasets/
-    └── my_f1.yaml         # F1 커스텀 데이터셋 설정
-
 **코드 통계**:
 - **총 코드 라인**: ~50,688줄
 - **racing_ai.py**: 23,158줄 (핵심 분석 엔진)
@@ -246,8 +233,8 @@ frame = cv2.resize(frame, (960, 540))
 <img src="photo/posss.png" width="1000"></a>   
 
 - 선행 차량과의 거리: 5.3m 
-- Ego 속도: 8.0km/h
-- 선행 차량 속도: 3.9km/h
+- Ego 가속도: 8.0km/h
+- 선행 차량 가속도: 3.9km/h
 - - Δ SPEED: 4.1km/h (내 차량이 더 빠름)
 - 추월 점수: **75.9점 (POSSIBLE)**
 
@@ -257,8 +244,8 @@ frame = cv2.resize(frame, (960, 540))
 <img src="photo/1584.png" width="1000"></a>   
 
 - 선행 차량과의 거리: 24.1m (상대 거리 0.32)
-- Ego 속도: 13.0 km/h
-- 선행 차량 속도: 20.9 km/h
+- Ego 가속도: 13.0 km/h
+- 선행 차량 가속도: 20.9 km/h
 - Δ SPEED: -7.9km/h (선행 차량이 더 빠름)
 - 추월 점수: **17.5점 (DANGEROUS)**
 
@@ -393,17 +380,5 @@ frame,timestamp,ego_speed,lead_speed,distance,rel_dist,overtake_score,overtake_s
 - iRacing, rFactor 2 세션 분석
 - AI가 제시하는 최적 추월 타이밍 학습
 - 추월 성공률 20% 향상 기대
-
----
-
-## 감사의 말
-
-이 프로젝트는 다음 오픈소스 라이브러리를 활용했습니다:
-
-- [Ultralytics YOLO](https://github.com/ultralytics/ultralytics) - F1 차량 검출의 핵심
-- [Norfair](https://github.com/tryolabs/norfair) - 안정적인 다중 차량 추적
-- [OpenCV](https://opencv.org/) - F1 영상 처리의 기반
-- [PyTorch](https://pytorch.org/) - GPU 가속 딥러닝
-- [Flask](https://flask.palletsprojects.com/) - 웹 대시보드 구현
 
 ---
